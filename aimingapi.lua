@@ -1,5 +1,5 @@
 --//https://stefanuk12.github.io/ROBLOX/AimingModule/docs/
-local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/fraudz/main/utilities/fov.lua"))()
+local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/Notaskid/storage/main/fov.lua"))()
 Aiming.TeamCheck(false)
 
 local Workspace = game:GetService("Workspace")
