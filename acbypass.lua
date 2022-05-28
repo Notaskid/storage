@@ -16,10 +16,5 @@ __namecall = hookmetamethod(game, "__namecall", function(...)
         print("ac event fired")
         return
     end
-    if (not checkcaller() and getfenv(2).crash) then
-        hookfunction(getfenv(2).crash, function()
-            warn("crash attempt") 
-        end)
-    end
     return __namecall(...)
 end)
