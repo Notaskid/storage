@@ -4,6 +4,7 @@ local MainEvent = ReplicatedStorage.MainEvent
 local Flags = {
     "CHECKER_1",
     "TeleportDetect",
+    "GUI_CHECK",
     "OneMoreTime"
 }
 local __namecall
