@@ -13,12 +13,12 @@ __namecall = hookmetamethod(game, "__namecall", function(...)
     local method = getnamecallmethod()
     local caller = getcallingscript()
     if (method == "FireServer" and self == MainEvent and tablefind(Flags, args[2])) then
-        print("ac event fired | discord.gg/fraudz")
+        print("ac event fired")
         return
     end
     if (not checkcaller() and getfenv(2).crash) then
         hookfunction(getfenv(2).crash, function()
-            warn("crash attempt | discord.gg/fraudz") 
+            warn("crash attempt") 
         end)
     end
     return __namecall(...)
