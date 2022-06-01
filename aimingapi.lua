@@ -11,13 +11,13 @@ local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local CurrentCamera = Workspace.CurrentCamera
 
-local DaHoodSettings = {
-    SilentAim = true,
+local AimingSettings = {
+    SilentAim = false,
     AimLock = false,
     Prediction = 0.157,
     AimLockKeybind = Enum.KeyCode.Q
 }
-getgenv().DaHoodSettings = DaHoodSettings
+getgenv().AimingSettings = AimingSettings
 
 function Aiming.Check()
     if not (Aiming.Enabled == true and Aiming.Selected ~= LocalPlayer and Aiming.SelectedPart ~= nil) then
@@ -40,8 +40,8 @@ __index = hookmetamethod(game, "__index", function(t, k)
     if (t:IsA("Mouse") and (k == "Hit" or k == "Target") and Aiming.Check()) then
         local SelectedPart = Aiming.SelectedPart
 
-        if (DaHoodSettings.SilentAim and (k == "Hit" or k == "Target")) then
-            local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * DaHoodSettings.Prediction)
+        if (AimingSettings.SilentAim and (k == "Hit" or k == "Target")) then
+            local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * AimingSettings.Prediction)
 
             return (k == "Hit" and Hit or SelectedPart)
         end
@@ -51,10 +51,10 @@ __index = hookmetamethod(game, "__index", function(t, k)
 end)
 
 RunService:BindToRenderStep("AimLock", 0, function()
-    if (DaHoodSettings.AimLock and Aiming.Check() and UserInputService:IsKeyDown(DaHoodSettings.AimLockKeybind)) then
+    if (AimingSettings.AimLock and Aiming.Check() and UserInputService:IsKeyDown(AimingSettings.AimLockKeybind)) then
         local SelectedPart = Aiming.SelectedPart
 
-        local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * DaHoodSettings.Prediction)
+        local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * AimingSettings.Prediction)
 
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
