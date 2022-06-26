@@ -14,7 +14,7 @@ __namecall = hookmetamethod(game, "__namecall", function(...)
     local method = getnamecallmethod()
     local caller = getcallingscript()
     if (method == "FireServer" and self == MainEvent and tablefind(Flags, args[2])) then
-        print("ac event fired")
+        wait(math.huge)
         return
     end
     return __namecall(...)
